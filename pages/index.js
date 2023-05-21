@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -14,110 +14,152 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
+      <div>
+        <form>
+          <label htmlFor="from" className="formLabel">
+            <i className="ion-location"></i>
+          </label>
+          <input
+            type="search"
+            className="searchField"
+            placeholder="Enter a location for the forecast"
           />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+          <input type="submit" className="submit" value="Search" />
+        </form>
+      </div>
+      <main className={styles.main}>
+        <div className="container">
+          <div className="bg1 hidden">
+            <h2>
+              <span id="temp-min"> </span> <span>| </span>
+              <span id="temp-max"> </span>
+            </h2>
+            <p id="week-summary">Local Weather</p>
           </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
+          <div className="bg1 hidden">
+            <h2>
+              <i className="fas fa-battery-three-quarters"></i>
             </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
+            <p>Air Quality</p>
+            <p id="air-quality"></p>
+          </div>
+          <div className="bg2 hidden">
+            <h2>
+              <i className="fas fa-running"></i>
             </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
+            <p id="dew-point">Dew Point</p>
+            <p>Dew Point</p>
+          </div>
+          <div className="bg1 hidden">
+            <p>Forecast Today</p>
+            <h2 id="forecast-today"> &deg;</h2>
+          </div>
+          <div className="bg1 hidden">
+            <h2>
+              <i className="fas fa-bed"></i>
             </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
+            <p>Forecast Tomorrow</p>
+            <p id="forecast-tomorrow"></p>
+          </div>
+          <div className="bg2 hidden" id="pollenCounts">
+            <div className="tree">
+              <h2 id="tree">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Tree</p>
+            </div>
+            <div className="ragweed">
+              <h2 id="ragweed">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Ragweed</p>
+            </div>
+            <div className="mold">
+              <h2 id="mold">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Mold</p>
+            </div>
+            <div className="grass">
+              <h2 id="grass">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Grass</p>
+            </div>
+          </div>
+          <div className="bg1 hidden">
+            <h2 id="current-temp">
+              {" "}
+              <span>lbs</span>
             </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+            <p>Current Temp</p>
+          </div>
+          <div className="bg1 hidden">
+            <h2 id="humidity"> </h2>
+            <p>Humidity</p>
+          </div>
+          <div className="bg2 hidden" id="sunrise-sunset">
+            <div className="sunrise">
+              <h2 id="sunrise">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Sunrise</p>
+            </div>
+            <div className="sunset">
+              <h2 id="sunset">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Sunset</p>
+            </div>
+          </div>
+          <div className="bg2 hidden" id="wind-speeds">
+            <div>
+              <h2 id="wind-speed">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Wind Speed</p>
+            </div>
+            <div>
+              <h2 id="wind-gust">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Wind Gust</p>
+            </div>
+            <div>
+              <h2 id="wind-gust-time">
+                {" "}
+                <span></span>
+              </h2>
+              <p>Wind Gust Time</p>
+            </div>
+          </div>
+          <div className="bg2 hidden">
+            <h2>
+              <i className="fas fa-dumbbell"></i>
+            </h2>
+            <h2 id="visibility">
+              {" "}
+              <span></span>
+            </h2>
+            <p>Visibility</p>
+          </div>
+          <div className="bg2 hidden">
+            <h2 id="ozone">
+              {" "}
+              <span></span>
+            </h2>
+            <p>Ozone</p>
+          </div>
         </div>
       </main>
     </>
-  )
+  );
 }
